@@ -12,7 +12,7 @@ export default function Appbar(){
                     <Link
                         color="foreground"
                         href="/"
-                        className="hover:text-sky-500 transition-colors"
+                        className="hover:text-sky-500 transition-colors text-white"
                     >Home</Link>
                 </NavbarItem>
             </NavbarContent>
