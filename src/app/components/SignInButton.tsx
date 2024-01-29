@@ -8,7 +8,7 @@ function SignInButton() {
     const {data: session} = useSession()
     return (
       <div className="flex items-center gap-2">
-        {/* {session && session.user ? (
+        {session && session.user ? (
           <>
             <p>{`${session.user.firstName} ${session.user.lastName}`}</p>
 
@@ -28,7 +28,7 @@ function SignInButton() {
                 href={"/auth/signup"}
             >Sign up</Button>
           </>
-        )} */}
+        )}
       </div>
     );
 }
