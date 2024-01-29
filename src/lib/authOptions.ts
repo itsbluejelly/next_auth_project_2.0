@@ -3,7 +3,7 @@ import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 // import GoogleProvider from "next-auth/providers/google";
 import * as bcrypt from "bcrypt";
-// import { User } from "@prisma/client";
+import { User } from "@prisma/client";
 
 export const authOptions: AuthOptions = {
   // pages: {
@@ -64,17 +64,17 @@ export const authOptions: AuthOptions = {
         return userWithoutPass;
       }
     })
-  ]
+  ],
 
-  // callbacks: {
-  //   async jwt({ token, user }) {
-  //     if (user) token.user = user as User;
-  //     return token;
-  //   },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) token.user = user as User;
+      return token;
+    },
 
-  //   async session({ token, session }) {
-  //     session.user = token.user;
-  //     return session;
-  //   },
-  // },
+    async session({ token, session }) {
+      session.user = token.user;
+      return session;
+    },
+  },
 };
