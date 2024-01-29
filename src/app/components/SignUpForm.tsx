@@ -17,7 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { passwordStrength } from "check-password-strength";
 import { toast } from "react-toastify";
 import PasswordComponent from "./PasswordComponent";
-// import { registerUser } from "@/src/lib/actions/authAction";
+import { registerUser } from "@/lib/actions/authAction";
 
 const FormSchema = z
   .object({
@@ -81,7 +81,7 @@ const SignUpForm = () => {
     const { accepted, confirmPassword, ...user } = data;
     
     try{
-      // const result = await registerUser(user);
+      const result = await registerUser(user);
       toast.success("The User Registered Successfully.");
     }catch (error) {
       toast.error("Something Went Wrong!");
