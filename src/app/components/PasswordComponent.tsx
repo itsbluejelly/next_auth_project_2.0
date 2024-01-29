@@ -1,6 +1,6 @@
 import {cn} from "@nextui-org/react"
 
-type Props = { passStrength: 0|1|2|3 }
+type Props = { passStrength: number }
 
 function arrayGenerator(value: number): number[]{
     const numberArray: number[] = []
