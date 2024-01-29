@@ -68,7 +68,7 @@ const SignUpForm = () => {
     resolver: zodResolver(FormSchema),
   });
 
-  const [passStrength, setPassStrength] = useState<0 |1 |2 | 3>(0);
+  const [passStrength, setPassStrength] = useState<number>(0);
   const [isVisiblePass, setIsVisiblePass] = useState<boolean>(false);
 
   useEffect(() => {
