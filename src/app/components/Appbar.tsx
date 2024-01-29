@@ -1,5 +1,5 @@
 import {Navbar, NavbarContent, NavbarItem, Button, Link} from "@nextui-org/react"
-// import SignInButton from "./SignInButton"
+import SignInButton from "./SignInButton"
 
 export default function Appbar(){
     return (
@@ -19,7 +19,7 @@ export default function Appbar(){
 
             <NavbarContent justify="end">
                 <NavbarItem>
-                   {/* <SignInButton/>    */}
+                   <SignInButton/>   
                 </NavbarItem>
             </NavbarContent>
         </Navbar>

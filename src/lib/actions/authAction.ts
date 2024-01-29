@@ -39,14 +39,14 @@ export const activateUser: ActivateUserFunc = async (jwtUserID) => {
   // });
   // if (!user) return "userNotExist";
   // if (user.emailVerified) return "alreadyActivated";
-  const result = await prisma.user.update({
-    // where: {
-    //   id: userId,
-    // },
-    data: {
-      emailVerified: new Date(),
-    },
-  });
+  // const result = await prisma.user.update({
+  //   // where: {
+  //   //   id: userId,
+  //   // },
+  //   data: {
+  //     emailVerified: new Date(),
+  //   },
+  // });
   return "success";
 };
 
@@ -78,7 +78,7 @@ type ResetPasswordFucn = (
   password: string
 ) => Promise<"userNotExist" | "success">;
 
-export const resetPassword: ResetPasswordFucn = async (jwtUserId, password) => {
+// export const resetPassword: ResetPasswordFucn = async (jwtUserId, password) => {
   // const payload = verifyJwt(jwtUserId);
   // if (!payload) return "userNotExist";
   // const userId = payload.id;
@@ -89,14 +89,14 @@ export const resetPassword: ResetPasswordFucn = async (jwtUserId, password) => {
   // });
   // if (!user) return "userNotExist";
 
-  const result = await prisma.user.update({
-    // where: {
-    //   id: userId,
-    // },
-    data: {
-      password: await bcrypt.hash(password, 10),
-    },
-  });
-  if (result) return "success";
-  else throw new Error("Something went wrong!");
-};
+  // const result = await prisma.user.update({
+  //   // where: {
+  //   //   id: userId,
+  //   // },
+  //   data: {
+  //     password: await bcrypt.hash(password, 10),
+  //   },
+  // });
+  // if (result) return "success";
+  // else throw new Error("Something went wrong!");
+// };
