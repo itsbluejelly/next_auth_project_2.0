@@ -1,4 +1,5 @@
 "use client";
+
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "@nextui-org/react";
@@ -10,7 +11,6 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { z } from "zod";
-// import NextAuthProviders from "./NextAuthProviders";
 
 interface Props { callbackUrl?: string; }
 
@@ -96,7 +96,6 @@ const SignInForm = (props: Props) => {
           </Button>
         </div>
       </div>
-      {/* <NextAuthProviders /> */}
     </form>
   );
 };
