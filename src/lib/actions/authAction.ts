@@ -7,16 +7,14 @@ import * as bcrypt from "bcrypt";
 //   sendMail,
 // } from "../mail";
 import { signJwt, verifyJwt } from "../jwt";
-import prisma from "../prisma"
+import prisma from "@/lib/prisma"
 import { User } from "@prisma/client";
 
 export async function registerUser(user: Omit<User, "id" | "emailVerified" | "image">){
-    const result = await prisma.user.create({ data: {
+    await prisma.user.create({ data: {
         ...user,
         password: await bcrypt.hash(user.password, 10)
     }})
-
-    return result
 }
 
 type ActivateUserFunc = (
