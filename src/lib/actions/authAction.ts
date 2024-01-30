@@ -15,6 +15,8 @@ export async function registerUser(user: Omit<User, "id" | "emailVerified" | "im
         ...user,
         password: await bcrypt.hash(user.password, 10)
     }})
+
+    return result
 }
 
 type ActivateUserFunc = (
