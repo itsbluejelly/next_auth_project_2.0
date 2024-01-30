@@ -9,12 +9,12 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/auth/signin",
   },
-  // session: {
-  //   strategy: "jwt",
-  // },
-  // jwt: {
-  //   secret: process.env.NEXTAUTH_SECRET,
-  // },
+  session: {
+    strategy: "jwt",
+  },
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+  },
   providers: [
     // GoogleProvider({
     //   clientId: process.env.GOOGLE_CLIENT_ID ?? "",
@@ -58,7 +58,7 @@ export const authOptions: AuthOptions = {
 
         if (!isPassowrdCorrect) throw new Error("User name or password is not correct");
 
-        // if (!user.emailVerified) throw new Error("Please verify your email first!");
+        if (!user.emailVerified) throw new Error("Please verify your email first!");
 
         const { password, ...userWithoutPass } = user;
         return userWithoutPass;

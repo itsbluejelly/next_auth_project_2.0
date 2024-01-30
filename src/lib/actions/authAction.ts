@@ -6,7 +6,7 @@ import * as bcrypt from "bcrypt";
 //   compileResetPassTemplate,
 //   sendMail,
 // } from "../mail";
-// import { signJwt, verifyJwt } from "../jwt";
+import { signJwt, verifyJwt } from "../jwt";
 import prisma from "../prisma"
 import { User } from "@prisma/client";
 
@@ -15,14 +15,6 @@ export async function registerUser(user: Omit<User, "id" | "emailVerified" | "im
         ...user,
         password: await bcrypt.hash(user.password, 10)
     }})
-
-    // const jwtUserId = signJwt({
-    //     id: result.id,
-    // });
-    // const activationUrl = `${process.env.NEXTAUTH_URL}/auth/activation/${jwtUserId}`;
-    // const body = compileActivationTemplate(user.firstName, activationUrl);
-    // await sendMail({ to: user.email as string, subject: "Activate Your Account", body });
-    return result;
 }
 
 type ActivateUserFunc = (
@@ -30,23 +22,23 @@ type ActivateUserFunc = (
 ) => Promise<"userNotExist" | "alreadyActivated" | "success">;
 
 export const activateUser: ActivateUserFunc = async (jwtUserID) => {
-  // const payload = verifyJwt(jwtUserID);
-  // const userId = payload?.id;
-  // const user = await prisma.user.findUnique({
-  //   where: {
-  //     id: userId,
-  //   },
-  // });
-  // if (!user) return "userNotExist";
-  // if (user.emailVerified) return "alreadyActivated";
-  // const result = await prisma.user.update({
-  //   // where: {
-  //   //   id: userId,
-  //   // },
-  //   data: {
-  //     emailVerified: new Date(),
-  //   },
-  // });
+  const payload = verifyJwt(jwtUserID);
+  const userId = payload?.id;
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+  if (!user) return "userNotExist";
+  if (user.emailVerified) return "alreadyActivated";
+  const result = await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      emailVerified: new Date(),
+    },
+  });
   return "success";
 };
 

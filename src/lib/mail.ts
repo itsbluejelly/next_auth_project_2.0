@@ -1,7 +1,5 @@
 import Handlebars from "handlebars";
 import nodemailer from "nodemailer";
-// import { activationTemplate } from "./emailTemplates/activation";
-// import { resetPasswordTemplate } from "./emailTemplates/resetPass";
 
 export async function sendMail({
   to,
